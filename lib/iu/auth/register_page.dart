@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mon_compagnon/iu/auth/login_page.dart';
 import 'package:mon_compagnon/viewmodels/registration_view_model.dart';
 
 class ResgisterPage extends StatelessWidget {
@@ -48,6 +47,7 @@ class ResgisterPage extends StatelessWidget {
                     const Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
+                        SizedBox(height: 20.0),
                         Text(
                           'Hello !',
                           style: TextStyle(
@@ -65,30 +65,86 @@ class ResgisterPage extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: <Widget>[
                           TextField(
-                            decoration:
-                                const InputDecoration(labelText: 'Email'),
+                            decoration: InputDecoration(
+                              labelText: 'Email',
+                              labelStyle: const TextStyle(
+                                  color: Color.fromRGBO(128, 128, 128, 1)),
+                              prefixIcon: const Icon(Icons.email_outlined),
+                              prefixIconColor:
+                                  const Color.fromRGBO(176, 94, 255, 1),
+                              border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(30.0),
+                                  borderSide: const BorderSide(
+                                      color: Color.fromRGBO(176, 94, 255, 1))),
+                            ),
                             onChanged: (value) =>
                                 registrationViewModel.setEmail(value),
                           ),
+                          const SizedBox(height: 10.0),
                           TextField(
-                            decoration:
-                                const InputDecoration(labelText: 'Login'),
+                            decoration: InputDecoration(
+                              labelText: 'Login',
+                              labelStyle: const TextStyle(
+                                  color: Color.fromRGBO(128, 128, 128, 1)),
+                              prefixIcon: const Icon(Icons.person_outline),
+                              prefixIconColor:
+                                  const Color.fromRGBO(176, 94, 255, 1),
+                              border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(30.0),
+                                  borderSide: const BorderSide(
+                                      color: Color.fromRGBO(176, 94, 255, 1))),
+                            ),
                             onChanged: (value) =>
                                 registrationViewModel.setLogin(value),
                           ),
+                          const SizedBox(height: 10.0),
                           TextField(
-                            decoration: const InputDecoration(
-                                labelText: 'Mot de passe'),
+                            decoration: InputDecoration(
+                              labelText: 'Mot de passe',
+                              labelStyle: const TextStyle(
+                                  color: Color.fromRGBO(128, 128, 128, 1)),
+                              prefixIcon: const Icon(Icons.password_outlined),
+                              prefixIconColor:
+                                  const Color.fromRGBO(176, 94, 255, 1),
+                              border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(30.0),
+                                  borderSide: const BorderSide(
+                                      color: Color.fromRGBO(176, 94, 255, 1))),
+                            ),
                             obscureText: true,
                             onChanged: (value) =>
                                 registrationViewModel.setPassword(value),
                           ),
+                          const SizedBox(height: 10.0),
                           TextField(
-                            decoration: const InputDecoration(
-                                labelText: 'Confirmer le mot de passe'),
+                            decoration: InputDecoration(
+                              labelText: 'Confirmer le mot de passe',
+                              labelStyle: const TextStyle(
+                                  color: Color.fromRGBO(128, 128, 128, 1)),
+                              prefixIcon: const Icon(Icons.password_outlined),
+                              prefixIconColor:
+                                  const Color.fromRGBO(176, 94, 255, 1),
+                              border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(30.0),
+                                  borderSide: const BorderSide(
+                                      color: Color.fromRGBO(176, 94, 255, 1))),
+                            ),
                             obscureText: true,
                             onChanged: (value) =>
                                 registrationViewModel.setConfirmPassword(value),
+                          ),
+                          const SizedBox(height: 10.0),
+                          Row(
+                            children: <Widget>[
+                              Checkbox(
+                                value: registrationViewModel.acceptTerms,
+                                onChanged: (value) =>
+                                    //  loginViewModel.setRememberMe(value!),
+                                    registrationViewModel.setAcceptTerms(true),
+                              ),
+                              const Text(
+                                  'J\'accepte les termes et conditions d\'utilisation'),
+                            ],
                           ),
                           const SizedBox(height: 20.0),
                           ElevatedButton(
@@ -96,22 +152,24 @@ class ResgisterPage extends StatelessWidget {
                               registrationViewModel
                                   .submitForm(); // Action à effectuer lors de la soumission du formulaire
                             },
-                            child: const Text('S\'inscrire'),
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor:
+                                  const Color.fromRGBO(61, 48, 162, 1),
+                              fixedSize: const Size(250, 45),
+                            ),
+                            child: const Text('S\'inscrire',
+                                style: TextStyle(color: Colors.white)),
                           ),
                         ],
                       ),
                     ),
-                    const SizedBox(height: 20.0),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         // Texte 'J'ai déjà un compte'
                         GestureDetector(
                           onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => const LoginPage()));
+                            Navigator.pushNamed(context, '/login');
                           },
                           child: const Text(
                             'J\'ai déjà un compte',

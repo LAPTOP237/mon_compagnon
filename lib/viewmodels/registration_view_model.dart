@@ -3,12 +3,17 @@ import '../models/registration_model.dart'; // Importez votre modèle
 
 class RegistrationViewModel extends ChangeNotifier {
   final RegistrationModel _registrationModel = RegistrationModel(
-      email: '', login: '', password: '', confirmPassword: '');
+      email: '',
+      login: '',
+      password: '',
+      confirmPassword: '',
+      acceptTerms: false);
 
   String get email => _registrationModel.email;
   String get login => _registrationModel.login;
   String get password => _registrationModel.password;
   String get confirmPassword => _registrationModel.confirmPassword;
+  bool get acceptTerms => _registrationModel.acceptTerms;
 
   void setEmail(String value) {
     _registrationModel.email = value;
@@ -30,6 +35,11 @@ class RegistrationViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
+  void setAcceptTerms(bool value) {
+    _registrationModel.acceptTerms = value;
+    notifyListeners();
+  }
+
   void submitForm() {
     // Logique de validation et d'envoi du formulaire
     if (_registrationModel.email.isNotEmpty &&
@@ -37,9 +47,9 @@ class RegistrationViewModel extends ChangeNotifier {
         _registrationModel.password.isNotEmpty &&
         _registrationModel.confirmPassword.isNotEmpty) {
       // Envoyer les données au serveur, etc.
-      print('Formulaire soumis');
+      //print('Formulaire soumis');
     } else {
-      print('Veuillez remplir tous les champs');
+      // print('Veuillez remplir tous les champs');
     }
   }
 }

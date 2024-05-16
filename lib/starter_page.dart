@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mon_compagnon/iu/auth/login_page.dart';
-
-import 'iu/account_type_page.dart';
 
 class StarterPage extends StatelessWidget {
   const StarterPage({super.key});
@@ -37,16 +34,13 @@ class StarterPage extends StatelessWidget {
               ElevatedButton(
                 onPressed: () {
                   // Redirection vers une autre page
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const AccountSelectPage()));
+                  Navigator.pushNamed(context, '/accountSelect');
                 },
                 style: ElevatedButton.styleFrom(
                   padding: const EdgeInsets.symmetric(
                       horizontal: 50.0, vertical: 16.0),
                 ),
-                child: const Text('Get Started',
+                child: const Text('Allons-y',
                     style: TextStyle(
                         color: Color.fromRGBO(61, 48, 162, 1),
                         fontWeight: FontWeight.bold,
@@ -56,10 +50,7 @@ class StarterPage extends StatelessWidget {
               // Lien "J'ai déjà un compte"
               GestureDetector(
                 onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const LoginPage()));
+                  Navigator.pushNamed(context, '/login');
                 },
                 child: const Text(
                   'J\'ai déjà un compte',

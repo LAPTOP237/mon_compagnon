@@ -1,5 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:mon_compagnon/iu/auth/home_page.dart';
+import 'package:mon_compagnon/iu/cite/cite_page.dart';
+import 'package:mon_compagnon/iu/recette/detail_recette_page.dart';
 import 'starter_page.dart';
+import 'package:provider/provider.dart';
+import 'package:mon_compagnon/viewmodels/login_view_model.dart';
+import 'package:mon_compagnon/viewmodels/registration_view_model.dart';
+import 'package:mon_compagnon/iu/auth/login_page.dart';
+import 'package:mon_compagnon/iu/auth/register_page.dart';
+import 'package:mon_compagnon/iu/account_type_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,27 +20,30 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => LoginViewModel()),
+        ChangeNotifierProvider(create: (_) => RegistrationViewModel()),
+      ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         title: 'Mon Compagnon',
+        initialRoute: '/',
+        routes: {
+          '/': (context) => const StarterPage(),
+          '/login': (context) => const LoginPage(),
+          '/register': (context) => const ResgisterPage(),
+          '/accountSelect': (context) => const AccountSelectPage(),
+          '/home': (context) => const HomePage(),
+          '/cite': (context) => const CitePage(),
+          '/detailRecette': (context) => const DetailRecettePage(),
+        },
         theme: ThemeData(
-          // This is the theme of your application.
-          //
-          // TRY THIS: Try running your application with "flutter run". You'll see
-          // the application has a purple toolbar. Then, without quitting the app,
-          // try changing the seedColor in the colorScheme below to Colors.green
-          // and then invoke "hot reload" (save your changes or press the "hot
-          // reload" button in a Flutter-supported IDE, or press "r" if you used
-          // the command line to start the app).
-          //
-          // Notice that the counter didn't reset back to zero; the application
-          // state is not lost during the reload. To reset the state, use hot
-          // restart instead.
-          //
-          // This works for code too, not just values: Most code changes can be
-          // tested with just a hot reload.
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          colorScheme: ColorScheme.fromSeed(
+              seedColor: const Color.fromRGBO(61, 48, 162, 1)),
           useMaterial3: true,
         ),
-        home: const StarterPage());
+      ),
+    );
   }
 }

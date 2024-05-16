@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mon_compagnon/iu/auth/register_page.dart';
 import 'package:mon_compagnon/viewmodels/login_view_model.dart';
 
 class LoginPage extends StatelessWidget {
@@ -44,7 +43,6 @@ class LoginPage extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    // Texte "S’inscrire en tant que"
                     const Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
@@ -58,49 +56,81 @@ class LoginPage extends StatelessWidget {
                       ],
                     ),
                     const SizedBox(height: 20.0),
-                    // Mon formulaire d'inscription
                     Padding(
                       padding: const EdgeInsets.all(16.0),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: <Widget>[
                           TextField(
-                            decoration:
-                                const InputDecoration(labelText: 'Login'),
+                            decoration: InputDecoration(
+                              labelText: 'Login',
+                              labelStyle: const TextStyle(
+                                  color: Color.fromRGBO(128, 128, 128, 1)),
+                              prefixIcon: const Icon(Icons.person_outline),
+                              prefixIconColor:
+                                  const Color.fromRGBO(176, 94, 255, 1),
+                              border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(30.0),
+                                  borderSide: const BorderSide(
+                                      color: Color.fromRGBO(176, 94, 255, 1))),
+                            ),
                             onChanged: (value) =>
                                 loginViewModel.setLogin(value),
                           ),
+                          const SizedBox(height: 20.0),
                           TextField(
-                            decoration: const InputDecoration(
-                                labelText: 'Mot de passe'),
+                            decoration: InputDecoration(
+                              labelText: 'Mot de passe',
+                              labelStyle: const TextStyle(
+                                  color: Color.fromRGBO(128, 128, 128, 1)),
+                              prefixIcon: const Icon(Icons.password_outlined),
+                              prefixIconColor:
+                                  const Color.fromRGBO(176, 94, 255, 1),
+                              border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(30.0),
+                                  borderSide: const BorderSide(
+                                      color: Color.fromRGBO(176, 94, 255, 1))),
+                            ),
                             obscureText: true,
                             onChanged: (value) =>
                                 loginViewModel.setPassword(value),
                           ),
+                          Row(
+                            children: <Widget>[
+                              Checkbox(
+                                value: loginViewModel.rememberMe,
+                                onChanged: (value) =>
+                                    //  loginViewModel.setRememberMe(value!),
+                                    loginViewModel.setRememberMe(true),
+                              ),
+                              const Text('Se souvenir de moi'),
+                            ],
+                          ),
                           const SizedBox(height: 20.0),
                           ElevatedButton(
                             onPressed: () {
-                              loginViewModel
-                                  .submitForm(); // Action à effectuer lors de la soumission du formulaire
+                              loginViewModel.submitForm();
+                              Navigator.pushReplacementNamed(context,
+                                  '/cite'); // Action à effectuer lors de la soumission du formulaire
                             },
-                            child: const Text('Se Connecter'),
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor:
+                                  const Color.fromRGBO(61, 48, 162, 1),
+                              fixedSize: const Size(250, 45),
+                            ),
+                            child: const Text('Se Connecter',
+                                style: TextStyle(color: Colors.white)),
                           ),
                         ],
                       ),
                     ),
-
-                    const SizedBox(height: 20.0),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         // Texte 'J'ai déjà un compte'
                         GestureDetector(
                           onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        const ResgisterPage()));
+                            Navigator.pushNamed(context, '/register');
                           },
                           child: const Text(
                             'Je n\'ai pas de compte',
