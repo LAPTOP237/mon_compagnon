@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:mon_compagnon/iu/widgets/cite_list.dart';
 import 'package:mon_compagnon/iu/widgets/filter_recette_list.dart';
 import 'package:mon_compagnon/iu/widgets/recette_list.dart';
-import 'package:mon_compagnon/utils/session_manager.dart';
 
 class CitePage extends StatefulWidget {
   const CitePage({super.key});
@@ -74,8 +73,7 @@ class _CitePageState extends State<CitePage> {
               ),
             ),
             onPressed: () {
-              SessionManager.clearSession();
-              Navigator.pushReplacementNamed(context, '/login');
+              Navigator.pushReplacementNamed(context, '/profile');
             },
           ),
         ],

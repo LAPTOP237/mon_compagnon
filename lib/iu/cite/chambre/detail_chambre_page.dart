@@ -2,14 +2,14 @@
 
 import 'package:flutter/material.dart';
 
-class DetailRecettePage extends StatefulWidget {
-  const DetailRecettePage({super.key});
+class DetailChambrePage extends StatefulWidget {
+  const DetailChambrePage({super.key});
 
   @override
-  _DetailRecettePageState createState() => _DetailRecettePageState();
+  _DetailChambrePageState createState() => _DetailChambrePageState();
 }
 
-class _DetailRecettePageState extends State<DetailRecettePage> {
+class _DetailChambrePageState extends State<DetailChambrePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,7 +37,7 @@ class _DetailRecettePageState extends State<DetailRecettePage> {
           color: Colors.white,
         ),
         title: const Text(
-          'OKOK SUCRE',
+          'Chambre 167',
           style: TextStyle(
             // fontWeight: FontWeight.bold,
             color: Colors.white,
@@ -87,33 +87,43 @@ class _DetailRecettePageState extends State<DetailRecettePage> {
                     ],
                   ),
                 ),
+                const Positioned(
+                  bottom: 8.0,
+                  right: 8.0,
+                  child: Text(
+                    'Libre',
+                    style: TextStyle(
+                      color: Colors.green,
+                      fontSize: 16.0,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
               ]),
             ),
             const SizedBox(
               height: 20,
             ),
             const Text(
-                "Ce plat est d'origine du cameroun, tres bon, il permet de piqué les gars des gens..."),
+                "Cette chambre est l'une des meilleurs placé au second niveau a l'abri de la chaleur"),
             const SizedBox(
               height: 5,
             ),
-            const Text('Ingredients :',
+            const Text('Prix :',
                 style: TextStyle(
                   color: Color.fromRGBO(61, 48, 162, 1),
                   fontWeight: FontWeight.bold,
                 )),
-            const Text(
-                "- Feuille d'okok \n- Arachide 100g \n- Noix de palme \n- Manioc ou Batons"),
+            const Text("25 000 Frs"),
             const SizedBox(
               height: 5,
             ),
-            const Text('Preparation :',
+            const Text('Equipé ? :',
                 style: TextStyle(
                   color: Color.fromRGBO(61, 48, 162, 1),
                   fontWeight: FontWeight.bold,
                 )),
-            const Text(
-                "- Etape 1 : Griller les arachides \n- Etape 2 : Ecraser les arachides \n- Etape 3: Bouillie l'eau et verser les feuilles \n- Etape 4: Manioc ou Batons"),
+            const Text("Oui"),
           ],
         ),
       ),

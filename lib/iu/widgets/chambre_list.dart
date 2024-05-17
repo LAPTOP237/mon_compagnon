@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class CiteList extends StatelessWidget {
-  const CiteList({super.key});
+class ChambreList extends StatelessWidget {
+  const ChambreList({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +25,8 @@ class CiteList extends StatelessWidget {
                     InkWell(
                       onTap: () {
                         // Handle card tap if needed
-                        Navigator.pushReplacementNamed(context, '/chambreCite');
+                        Navigator.pushReplacementNamed(
+                            context, '/detailChambreCite');
                       },
                       child: Container(
                         decoration: const BoxDecoration(
@@ -62,7 +63,7 @@ class CiteList extends StatelessWidget {
                       bottom: 8.0,
                       right: 8.0,
                       child: Text(
-                        'PK19',
+                        'Libre',
                         style: TextStyle(
                           color: Colors.black,
                           fontSize: 16.0,
@@ -74,7 +75,7 @@ class CiteList extends StatelessWidget {
                       top: 8.0,
                       left: 8.0,
                       child: Text(
-                        'La Citadelle',
+                        'Chambre 167',
                         style: TextStyle(
                           color: Colors.black,
                           fontSize: 16.0,

@@ -151,6 +151,7 @@ class ResgisterPage extends StatelessWidget {
                             onPressed: () {
                               registrationViewModel
                                   .submitForm(); // Action à effectuer lors de la soumission du formulaire
+                              Navigator.pushReplacementNamed(context, '/home');
                             },
                             style: ElevatedButton.styleFrom(
                               backgroundColor:
