@@ -29,6 +29,18 @@ class LoginPage extends StatelessWidget {
                 fit: BoxFit.contain,
               ),
               const SizedBox(height: 20.0),
+              // Message de connexion
+              Text(
+                loginViewModel.message,
+                style: TextStyle(
+                  color: loginViewModel.message.contains('réussie')
+                      ? Colors
+                          .green // Couleur verte pour un message de réussite
+                      : Colors.red, // Couleur rouge pour un message d'erreur
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const SizedBox(height: 20.0),
               // Cadre blanc
               Container(
                 width: double.infinity,
@@ -109,9 +121,7 @@ class LoginPage extends StatelessWidget {
                           const SizedBox(height: 20.0),
                           ElevatedButton(
                             onPressed: () {
-                              loginViewModel.submitForm();
-                              Navigator.pushReplacementNamed(context,
-                                  '/cite'); // Action à effectuer lors de la soumission du formulaire
+                              loginViewModel.submitForm(context);
                             },
                             style: ElevatedButton.styleFrom(
                               backgroundColor:

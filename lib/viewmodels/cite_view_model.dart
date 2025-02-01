@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:location/location.dart';
+// import 'package:location/location.dart';
 import 'package:mon_compagnon/models/cite_model.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -36,34 +36,34 @@ class CiteViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> setLocation() async {
-    Location location = Location();
+  // Future<void> setLocation() async {
+    // Location location = Location();
 
-    bool serviceEnabled;
-    PermissionStatus permissionGranted;
-    LocationData locationData;
+  //   bool serviceEnabled;
+  //   PermissionStatus permissionGranted;
+  //   LocationData locationData;
 
-    serviceEnabled = await location.serviceEnabled();
-    if (!serviceEnabled) {
-      serviceEnabled = await location.requestService();
-      if (!serviceEnabled) {
-        return;
-      }
-    }
+  //   serviceEnabled = await location.serviceEnabled();
+  //   if (!serviceEnabled) {
+  //     serviceEnabled = await location.requestService();
+  //     if (!serviceEnabled) {
+  //       return;
+  //     }
+  //   }
 
-    permissionGranted = await location.hasPermission();
-    if (permissionGranted == PermissionStatus.denied) {
-      permissionGranted = await location.requestPermission();
-      if (permissionGranted != PermissionStatus.granted) {
-        return;
-      }
-    }
+  //   permissionGranted = await location.hasPermission();
+  //   if (permissionGranted == PermissionStatus.denied) {
+  //     permissionGranted = await location.requestPermission();
+  //     if (permissionGranted != PermissionStatus.granted) {
+  //       return;
+  //     }
+  //   }
 
-    locationData = await location.getLocation();
-    _cite.localisation = '${locationData.latitude}, ${locationData.longitude}';
-    // print('${locationData.latitude}, ${locationData.longitude}');
-    notifyListeners();
-  }
+  //   locationData = await location.getLocation();
+  //   _cite.localisation = '${locationData.latitude}, ${locationData.longitude}';
+  //   // print('${locationData.latitude}, ${locationData.longitude}');
+  //   notifyListeners();
+  // }
 
   Future<void> pickImage() async {
     final pickedFile = await _picker.pickImage(source: ImageSource.gallery);

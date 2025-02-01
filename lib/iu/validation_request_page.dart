@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:mon_compagnon/viewmodels/validation_request_view_model.dart';
 import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
-import 'dart:io';
 
 class ValidationRequestPage extends StatelessWidget {
   const ValidationRequestPage({super.key});
@@ -53,17 +52,16 @@ class ValidationRequestPage extends StatelessWidget {
                     child: const Text('Télécharger la photo avant de la CNI',
                         style: TextStyle(color: Colors.white)),
                   ),
-                  if (viewModel.request.frontCniImage != null)
-                    Card(
-                      child: Container(
-                        width: double.infinity,
-                        height: 200,
-                        child: Image.network(
-                          viewModel.request.frontCniImage,
-                          fit: BoxFit.cover,
-                        ),
+                  Card(
+                    child: SizedBox(
+                      width: double.infinity,
+                      height: 200,
+                      child: Image.network(
+                        viewModel.request.frontCniImage,
+                        fit: BoxFit.cover,
                       ),
                     ),
+                  ),
                   ElevatedButton(
                     onPressed: viewModel.pickBackCniImage,
                     style: ElevatedButton.styleFrom(
@@ -72,21 +70,20 @@ class ValidationRequestPage extends StatelessWidget {
                     child: const Text('Télécharger la photo arrière de la CNI',
                         style: TextStyle(color: Colors.white)),
                   ),
-                  if (viewModel.request.backCniImage != null)
-                    // Image.file(
-                    //   File(viewModel.request.backCniImage!),
-                    //   height: 100,
-                    // ),
-                    Card(
-                      child: Container(
-                        width: double.infinity,
-                        height: 200,
-                        child: Image.network(
-                          viewModel.request.backCniImage,
-                          fit: BoxFit.cover,
-                        ),
+                  // Image.file(
+                  //   File(viewModel.request.backCniImage!),
+                  //   height: 100,
+                  // ),
+                  Card(
+                    child: SizedBox(
+                      width: double.infinity,
+                      height: 200,
+                      child: Image.network(
+                        viewModel.request.backCniImage,
+                        fit: BoxFit.cover,
                       ),
                     ),
+                  ),
                   SwitchListTile(
                     title: const Text('Responsable de cité'),
                     value: viewModel.request.isCityManager,
@@ -101,21 +98,20 @@ class ValidationRequestPage extends StatelessWidget {
                       child: const Text('Télécharger le document de la Cité',
                           style: TextStyle(color: Colors.white)),
                     ),
-                  if (viewModel.request.cityDocument != null)
-                    // Image.file(
-                    //   File(viewModel.request.cityDocument!),
-                    //   height: 100,
-                    // ),
-                    Card(
-                      child: Container(
-                        width: double.infinity,
-                        height: 200,
-                        child: Image.network(
-                          viewModel.request.cityDocument,
-                          fit: BoxFit.cover,
-                        ),
+                  // Image.file(
+                  //   File(viewModel.request.cityDocument!),
+                  //   height: 100,
+                  // ),
+                  Card(
+                    child: SizedBox(
+                      width: double.infinity,
+                      height: 200,
+                      child: Image.network(
+                        viewModel.request.cityDocument,
+                        fit: BoxFit.cover,
                       ),
                     ),
+                  ),
                   const SizedBox(height: 20),
                   ElevatedButton(
                     onPressed: viewModel.submitRequest,

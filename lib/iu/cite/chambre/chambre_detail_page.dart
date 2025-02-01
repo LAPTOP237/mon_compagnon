@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:mon_compagnon/viewmodels/chambre_view_model.dart';
 import 'package:provider/provider.dart';
@@ -32,21 +31,20 @@ class ChambreDetailPage extends StatelessWidget {
             return SingleChildScrollView(
               child: Column(
                 children: [
-                  if (viewModel.room.imageUrl != null)
-                    // Image.file(
-                    //   File(viewModel.cite.imageUrl),
-                    //   height: 200,
-                    // ),
-                    Card(
-                      child: Container(
-                        width: double.infinity,
-                        height: 200,
-                        child: Image.network(
-                          viewModel.room.imageUrl,
-                          fit: BoxFit.cover,
-                        ),
+                  // Image.file(
+                  //   File(viewModel.cite.imageUrl),
+                  //   height: 200,
+                  // ),
+                  Card(
+                    child: SizedBox(
+                      width: double.infinity,
+                      height: 200,
+                      child: Image.network(
+                        viewModel.room.imageUrl,
+                        fit: BoxFit.cover,
                       ),
                     ),
+                  ),
                   if (viewModel.isEditing)
                     ElevatedButton(
                       onPressed: viewModel.pickImage,
@@ -100,7 +98,7 @@ class ChambreDetailPage extends StatelessWidget {
                     enabled: viewModel.isEditing,
                     onChanged: viewModel.toggleEstLibre,
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   if (!viewModel.isEditing) ...[
                     ElevatedButton(
                       onPressed: viewModel.toggleEditing,

@@ -1,4 +1,3 @@
-import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:mon_compagnon/viewmodels/cite_view_model.dart';
@@ -33,21 +32,20 @@ class CiteAddPage extends StatelessWidget {
             return SingleChildScrollView(
               child: Column(
                 children: [
-                  if (viewModel.cite.imageUrl != null)
-                    // Image.file(
-                    //   File(viewModel.cite.imageUrl),
-                    //   height: 200,
-                    // ),
-                   Card(
-                      child: Container(
-                        width: double.infinity,
-                        height: 200,
-                        child: Image.network(
-                          viewModel.cite.imageUrl,
-                          fit: BoxFit.cover,
-                        ),
+                  // Image.file(
+                  //   File(viewModel.cite.imageUrl),
+                  //   height: 200,
+                  // ),
+                 Card(
+                    child: SizedBox(
+                      width: double.infinity,
+                      height: 200,
+                      child: Image.network(
+                        viewModel.cite.imageUrl,
+                        fit: BoxFit.cover,
                       ),
                     ),
+                  ),
                   ElevatedButton(
                     onPressed: viewModel.pickImage,
                      style: ElevatedButton.styleFrom(
@@ -76,7 +74,7 @@ class CiteAddPage extends StatelessWidget {
                   ),
                   GestureDetector(
                     onTap: () async {
-                      await viewModel.setLocation();
+                      // await viewModel.setLocation();
                     },
                     child: AbsorbPointer(
                       child: _buildTextField(

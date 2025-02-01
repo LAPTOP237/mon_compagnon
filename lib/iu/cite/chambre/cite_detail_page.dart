@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:mon_compagnon/viewmodels/cite_view_model.dart';
 import 'package:provider/provider.dart';
@@ -48,25 +47,24 @@ class CiteDetailPage extends StatelessWidget {
             return SingleChildScrollView(
               child: Column(
                 children: [
-                  if (viewModel.cite.imageUrl != null)
-                    // Image.file(
-                    //   File(viewModel.cite.imageUrl),
-                    //   height: 200,
-                    // ),
-                    Card(
-                      child: Container(
-                        width: double.infinity,
-                        height: 200,
-                        child: Image.network(
-                          viewModel.cite.imageUrl,
-                          fit: BoxFit.cover,
-                        ),
+                  // Image.file(
+                  //   File(viewModel.cite.imageUrl),
+                  //   height: 200,
+                  // ),
+                  Card(
+                    child: SizedBox(
+                      width: double.infinity,
+                      height: 200,
+                      child: Image.network(
+                        viewModel.cite.imageUrl,
+                        fit: BoxFit.cover,
                       ),
                     ),
+                  ),
                   if (viewModel.isEditing)
                     ElevatedButton(
                       onPressed: viewModel.pickImage,
-                       style: ElevatedButton.styleFrom(
+                      style: ElevatedButton.styleFrom(
                         backgroundColor: const Color.fromRGBO(61, 48, 162, 1),
                       ),
                       child: const Text('Changer l\'image',
@@ -95,7 +93,7 @@ class CiteDetailPage extends StatelessWidget {
                   ),
                   GestureDetector(
                     onTap: () async {
-                      await viewModel.setLocation();
+                      // await viewModel.setLocation();
                     },
                     child: AbsorbPointer(
                       child: _buildTextField(

@@ -1,10 +1,9 @@
-import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:mon_compagnon/models/validation_request_model.dart';
 
 class ValidationRequestViewModel extends ChangeNotifier {
-  ValidationRequestModel _request;
+  final ValidationRequestModel _request;
   final ImagePicker _picker = ImagePicker();
 
   ValidationRequestViewModel()
